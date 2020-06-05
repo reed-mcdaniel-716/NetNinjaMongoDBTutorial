@@ -1,0 +1,33 @@
+# help from: https://github.com/LukeMwila/multi-container-nginx-react-node-mongo
+# https://www.digitalocean.com/community/tutorials/containerizing-a-node-js-application-for-development-with-docker-compose
+version: '3.1'
+services:
+  mongodb:
+    container_name: mongodb
+    image: mongo:3.6.6
+    restart: always
+    ports:
+      - '27017:27017'
+    env_file:
+      - ./mongodb/mongo-variables.env
+    volumes:
+      - dbdata:/data/db
+    networks:
+      - app-net
+  mongo-express:
+    container_name: mongoexp
+    image: mongo-express
+    restart: always
+    ports:
+      - '8081:8081'
+    env_file:
+      - ./mongodb/mongo-variables.env
+    networks:
+      - app-net
+# network for services
+networks:
+  app-net:
+    driver: bridge
+# for our named volumes
+volumes:
+  dbdata:
