@@ -11,15 +11,23 @@
 .
 ├── README.md
 ├── docker-compose.yml
+├── models
+│   ├── author.js (model for Authors collection with embedded Books)
+│   └── mathcourse.js (model form MathCourse collection)
 ├── mongodb
-│   ├── dbdata
-│   └── mongo-variables.env
+│   ├── dbdata (host data (empty))
+│   └── mongo-variables.env (environment variables for mongo and mongo-express containers)
 ├── package-lock.json
-├── package.json
+├── package.json (project overview including testing specifications and dependencies)
 └── test
-    └── connection.js
+    ├── connection.js (test for connecting to db)
+    ├── deleting_test.js (test for deleting docs from collection)
+    ├── finding_test.js (test for finding docs from collection)
+    ├── nesting_test.js (test for working with models and embedded documents)
+    ├── saving_test.js (test for saving docs from collection)
+    └── updating_test.js (test for updating docs from collection)
 
-3 directories, 6 files
+4 directories, 13 files
 ```
 ---
 ## 1. Introduction to MongoDB
